@@ -91,9 +91,9 @@
                 
                         {{-- Phone Number --}}
                         <div class="mb-3">
-                            <label for="phoneNumber" class="form-label">Phone Number</label>
-                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required>
-                            @error('phoneNumber')
+                            <label for="phone_number" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+                            @error('phone_number')
                                 <div class="alert alert-danger">{{$message}}</div>
                             @enderror
                         </div>
@@ -109,9 +109,9 @@
                 
                         {{-- Profile Picture --}}
                         <div class="mb-3">
-                            <label for="profilePicture" class="form-label">Profile Picture</label>
-                            <input type="file" class="form-control" id="profilePicture" name="profilePicture" required>
-                            @error('profilePicture')
+                            <label for="profile_picture" class="form-label">Profile Picture</label>
+                            <input type="file" class="form-control" id="profile_picture" name="profile_picture" required>
+                            @error('profile_picture')
                                 <div class="alert alert-danger">{{$message}}</div>
                             @enderror
                         </div>

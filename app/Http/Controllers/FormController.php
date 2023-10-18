@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\client;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -12,35 +13,39 @@ class FormController extends Controller
         return view('form');
     }
 
-    public function show(Request $request)
+    public function addClient(Request $request)
     {
 
         $request->validate([
             'email' => 'required|email:rfc',
             'name' => 'required|min:3|max:30',
-            'phoneNumber' => 'required|numeric',
+            'phone_number' => 'required|numeric',
             'gpa' => 'required|numeric|between:2.00,4.00',
-            'profilePicture' => 'required|max:2048|mimes:jpg,jpeg,png'
+            'profile_picture' => 'required|max:2048|mimes:jpg,jpeg,png'
         ]);
 
-        $request->profilePicture->storeAs('public/images', $request->profilePicture->getClientOriginalName());
-
-        $results = [
+        
+        $file_name ="{$request->email}-{$request->profile_picture->getClientOriginalName()}";
+        $request->profile_picture->storeAs('public/images', $file_name);
+        
+        client::create ([
             'email' => $request->email,
             'name' => $request->name,
-            'phoneNumber' => $request->phoneNumber,
+            'phone_number' => $request->phone_number,
             'gpa' => $request->gpa,
-            'profilePicture' => $request->profilePicture->getClientOriginalName(),
-        ];
-
-        return redirect('/result')->with(['result' => $results, 'status' => 'success']);
+            'profile_picture' => $file_name
+        ]);
+        
+        return redirect('/result')->with(['status' => 'Success Create New Client']);
     }
 
     public function result() {
-        $results = session()->get('result');
+        $clients = client::latest()->first();
 
-        return view('result',[
-            'results' => $results
-        ]);
+        return view('result',
+        [
+            'results' => $clients
+        ]
+    );
     }
 }

@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get ('/form', [FormController::class, 'index']); 
-Route::post('/form', [Formcontroller::class, 'show']); 
+Route::post('/form', [Formcontroller::class, 'addClient']); 
 Route::get ('/result', [Formcontroller::class, 'result']);

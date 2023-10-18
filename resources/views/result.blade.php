@@ -70,9 +70,9 @@
                         <ul class="list-group">
                             <li class="list-group-item"><strong>Email Address:</strong> {{ $results['email'] }}</li>
                             <li class="list-group-item"><strong>Name:</strong> {{ $results['name'] }}</li>
-                            <li class="list-group-item"><strong>Phone Number:</strong> {{ $results['phoneNumber'] }}</li>
+                            <li class="list-group-item"><strong>Phone Number:</strong> {{ $results['phone_number'] }}</li>
                             <li class="list-group-item"><strong>GPA:</strong> {{ $results['gpa'] }}</li>
-                            <li class="list-group-item"><strong>Profile Picture:</strong> <img src="{{ asset('storage/images/' . $results['profilePicture']) }}" alt="user-picture" class="img-fluid"></li>
+                            <li class="list-group-item"><strong>Profile Picture:</strong> <img src="{{ asset('storage/images/' . $results['profile_picture']) }}" alt="user-picture" class="img-fluid"></li>
                         </ul>
                     </div>
                 </div>
